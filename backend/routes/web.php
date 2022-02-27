@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Validation\Rules\In;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,5 +37,23 @@ Route::get('hello', function() {
 });
 
 Route::get('return-html', function() use ($html) {
+  return $html;
+});
+
+Route::get('route-param/{msg}', function($msg) {
+  $html = <<<EOF
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title></title>
+  </head>
+  <body>
+    <ul>
+      <li>$msg</li>
+    </ul>
+  </body>
+  </html>
+  EOF;
+
   return $html;
 });
